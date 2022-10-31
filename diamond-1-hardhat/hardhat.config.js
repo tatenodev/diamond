@@ -1,4 +1,5 @@
 
+require("@nomiclabs/hardhat-etherscan");
 /* global ethers task */
 require('@nomiclabs/hardhat-waffle')
 
@@ -25,5 +26,16 @@ module.exports = {
       enabled: true,
       runs: 200
     }
-  }
+  },
+  networks: {
+    goerli: {
+        url: process.env.ALCHEMY,
+        accounts: [process.env.SECRETKEY_DEV_MAIN]
+    }
+    },
+    etherscan: {
+        // Your API key for Etherscan
+        // Obtain one at https://etherscan.io/
+        apiKey: process.env.ETHERSCAN_API_KEY
+    }
 }
