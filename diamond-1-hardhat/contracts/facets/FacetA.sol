@@ -26,7 +26,7 @@ library LibA {
   function diamondStorage() internal pure returns(DiamondStorage storage ds) {
     bytes32 storagePosition = keccak256("diamond.storage.LibA");
     assembly {
-    ds.slot := storagePosition
+      ds.slot := storagePosition
     }
   }
 
@@ -42,5 +42,5 @@ contract FacetA {
   function getDataA() external view returns (bytes32) {
     return LibA.diamondStorage().dataA;
   }
-  
+
 }
