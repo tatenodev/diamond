@@ -2,10 +2,11 @@
 /* eslint prefer-const: "off" */
 
 async function deployFacet() {
-  const FacetA = await ethers.getContractFactory('FacetA');
+  // const FacetA = await ethers.getContractFactory('FacetA');
+  const FacetA = await ethers.getContractFactory('MyNFTFacet');
   const facetA = await FacetA.deploy();
   await facetA.deployed();
-  console.log('facetA deployed:', facetA.address);
+  console.log('MyNFTFacet deployed:', facetA.address);
 
   return facetA.address;
 }
