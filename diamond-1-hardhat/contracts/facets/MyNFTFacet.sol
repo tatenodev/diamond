@@ -15,6 +15,7 @@ library LibMyNFT {
       mapping(address => uint256) balances;
       mapping(uint256 => address) tokenApprovals;
       mapping(address => mapping(address => bool)) operatorApprovals;
+      Counters.Counter tokenIds;
   }
   
   function diamondStorage() internal pure returns(DiamondStorage storage ds) {
@@ -26,6 +27,7 @@ library LibMyNFT {
 }
 
 contract MyNFTFacet is Context {
+  using Counters for Counters.Counter;
   using Address for address;
   using Strings for uint256;
 
@@ -60,6 +62,12 @@ contract MyNFTFacet is Context {
   function symbol() public view returns (string memory) {
     LibMyNFT.DiamondStorage storage ds = LibMyNFT.diamondStorage();
     return ds.symbol;
+  }
+
+  function mintItem() public {
+    LibMyNFT.DiamondStorage storage ds = LibMyNFT.diamondStorage();
+    uint256 tokenId = ds.tokenIds.current();
+    _safeMint(msg.sender, tokenId);
   }
 
   /**

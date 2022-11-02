@@ -2,13 +2,13 @@
 /* eslint prefer-const: "off" */
 
 async function deployFacet() {
-  // const FacetA = await ethers.getContractFactory('FacetA');
-  const FacetA = await ethers.getContractFactory('MyNFTFacet');
-  const facetA = await FacetA.deploy();
-  await facetA.deployed();
-  console.log('MyNFTFacet deployed:', facetA.address);
+  // const Facet = await ethers.getContractFactory('FacetA');
+  const Facet = await ethers.getContractFactory('MyNFTFacet');
+  const facet = await Facet.deploy();
+  await facet.deployed();
+  console.log('MyNFTFacet deployed:', facet.address);
 
-  return facetA.address;
+  return facet.address;
 }
 
 // We recommend this pattern to be able to use async/await everywhere
