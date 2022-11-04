@@ -1,6 +1,7 @@
-
+require("@nomiclabs/hardhat-etherscan");
 /* global ethers task */
 require('@nomiclabs/hardhat-waffle')
+require("dotenv").config();
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -25,5 +26,16 @@ module.exports = {
       enabled: true,
       runs: 200
     }
-  }
+  },
+  networks: {
+    goerli: {
+        url: process.env.ALCHEMY,
+        accounts: [process.env.SECRETKEY_DEV_MAIN]
+    }
+    },
+    etherscan: {
+        // Your API key for Etherscan
+        // Obtain one at https://etherscan.io/
+        apiKey: process.env.ETHERSCAN_API_KEY
+    }
 }
